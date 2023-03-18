@@ -1,4 +1,5 @@
 using DAL;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,11 @@ namespace HotelManagementSystem
             services.AddTransient(typeof(BookingService));
             services.AddControllersWithViews();
             services.AddSwaggerGen();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(c =>
+            {
+                c.LoginPath = "/Security/Login";
+                //c.AccessDeniedPath = "/security/AccessDenied";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +64,8 @@ namespace HotelManagementSystem
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
