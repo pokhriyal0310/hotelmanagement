@@ -16,10 +16,10 @@ namespace DAL.Models
         public string CustomerName { get; set; }
         public DateTime? CustomerDob { get; set; }
         public string CustomerAddress { get; set; }
-        public int? CustomerContact { get; set; }
         public string CustomerEmail { get; set; }
         public int? HotelId { get; set; }
         public int? Age { get; set; }
+        public string CustomerContact { get; set; }
 
         public virtual Hotel Hotel { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }

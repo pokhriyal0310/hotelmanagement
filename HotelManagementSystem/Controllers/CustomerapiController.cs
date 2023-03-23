@@ -47,6 +47,21 @@ namespace HotelManagementSystem.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpPut]
+        [Route("UpdateCustomer")]
+        public IActionResult UpdateCustomer(Customer? UpdCustomer)
+        {
+            Customer? UpdCustomers;
+            try
+            {
+                UpdCustomer = cservice.UpdateCustomer(UpdCustomer);
+                return Ok(UpdCustomer);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> addAdmin([FromQuery] Customer c)

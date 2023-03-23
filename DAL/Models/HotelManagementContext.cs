@@ -52,6 +52,10 @@ namespace DAL.Models
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("Admin_Type");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Booking>(entity =>
@@ -86,7 +90,10 @@ namespace DAL.Models
                     .IsUnicode(false)
                     .HasColumnName("Customer_Address");
 
-                entity.Property(e => e.CustomerContact).HasColumnName("Customer_Contact");
+                entity.Property(e => e.CustomerContact)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("Customer_Contact");
 
                 entity.Property(e => e.CustomerDob)
                     .HasColumnType("date")

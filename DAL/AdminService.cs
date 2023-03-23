@@ -71,7 +71,8 @@ namespace DAL
             {
                 AdminId = user.AdminId,
                 AdminName = user.AdminName,
-                AdminType = user.AdminType
+                AdminType = user.AdminType,
+                Password = user.Password
 
             };
             db.Admins.Add(User);

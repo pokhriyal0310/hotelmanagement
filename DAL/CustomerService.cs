@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,26 @@ namespace DAL
             catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+        }
+        public Customer UpdateCustomer(Customer CustomerRec)
+        {
+            try
+            {
+                if (CustomerRec != null)
+                {
+                    db.Entry(CustomerRec).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return CustomerRec;
+                }
+                else
+                {
+                    throw new Exception("Ui Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
         public async Task<int> AddCustomer(Customer cust)
